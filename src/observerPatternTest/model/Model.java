@@ -9,12 +9,16 @@ public class Model {
 
   public void updateMiles(int kilometers) {
     System.out.println("updating miles based on a kilometers value of " + kilometers);
-    this.setMiles((int) (CONVERSION_RATE * kilometers));
+    this.setKilometers(kilometers);
+    this.setMiles((int) (kilometers / CONVERSION_RATE));
+    System.out.println("new miles: " + (int) (kilometers / CONVERSION_RATE));
   }
 
   public void updateKilometers(int miles) {
     System.out.println("updating kilometers based on a miles value of " + miles);
-    this.setKilometers((int) (miles / CONVERSION_RATE));
+    this.setMiles(miles);
+    this.setKilometers((int) (CONVERSION_RATE * miles));
+    System.out.println("new kilometers: " + (int) (CONVERSION_RATE * miles));
   }
 
   public float getCONVERSION_RATE() {

@@ -8,6 +8,7 @@ import observerPatternTest.controller.Controller;
 public class SlideListener implements EventListeners, ChangeListener {
 
   private final Controller controller;
+
   public SlideListener(Controller controller) {
     this.controller = controller;
   }
@@ -15,13 +16,13 @@ public class SlideListener implements EventListeners, ChangeListener {
   @Override
   public void kilometersUpdated(int value) {
     System.out.println("Kilometers: " + value);
-    controller.updateKilometers(value);
+    controller.updateMiles(value);
   }
 
   @Override
   public void milesUpdated(int value) {
     System.out.println("Miles: " + value);
-    controller.updateMiles(value);
+    controller.updateKilometers(value);
   }
 
   @Override

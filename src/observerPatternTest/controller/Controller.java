@@ -1,29 +1,26 @@
 package observerPatternTest.controller;
 
 import observerPatternTest.model.Model;
+import observerPatternTest.view.View;
 
 public class Controller {
 
   private final Model model;
+  private final View view;
 
-  public Controller(Model model) {
-    this.model = new Model();
+  public Controller(Model model, View view) {
+    this.model = model;
+    this.view = view;
   }
 
   public void updateMiles(int kilometers) {
     model.updateMiles(kilometers);
+    view.updateSliderByName("KilometersSlider", model);
   }
 
   public void updateKilometers(int miles) {
     model.updateKilometers(miles);
-  }
-
-  public float getConversionRate() {
-    return model.getCONVERSION_RATE();
-  }
-
-  public int getStartValue() {
-    return model.getSTART_VALUE_MILES();
+    view.updateSliderByName("MilesSlider", model);
   }
 
   public int getKilometers() {
