@@ -13,14 +13,14 @@ public class Controller {
     this.view = view;
   }
 
-  public void updateMiles(int kilometers) {
-    model.updateMiles(kilometers);
-    view.updateSliderByName("KilometersSlider", model);
+  public void updateMiles(int kilometer) {
+    model.updateMiles(kilometer);
+    view.updateSliderByName("MilesSlider", model);
   }
 
   public void updateKilometers(int miles) {
     model.updateKilometers(miles);
-    view.updateSliderByName("MilesSlider", model);
+    view.updateSliderByName("KilometersSlider", model);
   }
 
   public int getKilometers() {

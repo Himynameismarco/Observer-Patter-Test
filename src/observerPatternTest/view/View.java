@@ -14,15 +14,19 @@ public class View extends JFrame {
 
   private FlowLayout layout = new FlowLayout();
 
-  private static final int FRAME_WIDTH = 200;
+  private static final int MIN_SLIDER = 0;
+  private static final int MAX_SLIDER = 100;
+  private final float CONVERSION_RATE = (float) 1.609344;
+
+  private static final int FRAME_WIDTH = 250;
   private static final int FRAME_HEIGHT = 500;
   private final Dimension frameDimension = new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
   JPanel panel = new JPanel(layout);
 
   JLabel labelMiles = new JLabel();
   JLabel labelKilometers = new JLabel();
-  JSlider sliderKilometers = new JSlider( 0, 100);
-  JSlider sliderMiles = new JSlider( 0, 100);
+  JSlider sliderKilometers = new JSlider( MIN_SLIDER,(int) (CONVERSION_RATE * MAX_SLIDER));
+  JSlider sliderMiles = new JSlider( MIN_SLIDER, MAX_SLIDER);
 
   /**
    * Create the Graphical User Interface.
@@ -31,7 +35,6 @@ public class View extends JFrame {
   public View() throws HeadlessException {
     this.setTitle("Distance");
     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    //addEventListeners();
     setMinimumSize(frameDimension);
     setMaximumSize(frameDimension);
     setResizable(false);
@@ -57,8 +60,8 @@ public class View extends JFrame {
     sliderKilometers.setName("KilometersSlider");
     sliderKilometers.setValue(50);
 
-    sliderKilometers.setMajorTickSpacing(20);
-    sliderKilometers.setMinorTickSpacing(5);
+    sliderKilometers.setMajorTickSpacing(32);
+    sliderKilometers.setMinorTickSpacing(8);
     sliderMiles.setMajorTickSpacing(20);
     sliderMiles.setMinorTickSpacing(5);
     labelMiles.setText("Miles is =" + sliderMiles.getValue());
@@ -79,6 +82,7 @@ public class View extends JFrame {
   }
 
   public void updateSliderByName(String name, Model model) {
+    System.out.println("View: name: " + name);
     switch (name) {
       case "KilometersSlider":
         labelMiles.setText("Miles is =" + model.getMiles());
